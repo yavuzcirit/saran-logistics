@@ -4,14 +4,9 @@ import Link from 'next/link';
 import { JSX } from 'react';
 import { blogPosts, BlogPost } from '../data';
 
-type Props = {
-  params: {
-    id: string;
-  };
-  searchParams: { [key: string]: string | string[] | undefined };
-};
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+
+export async function generateMetadata({ params }){
   const post = blogPosts.find((post) => post.id === Number(params.id));
 
   return post
@@ -38,11 +33,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       };
 }
 
-export default async function BlogDetail({ params }: Props): Promise<JSX.Element> {
-const { id } : {id: string} = params as {id: string};
-  const post: BlogPost = await blogPosts?.find(
-    (post: BlogPost) => post.id === Number(id)
-  ) as BlogPost;
+export default async function BlogDetail({ params }) {
+const { id }  = params 
+  const post = await blogPosts?.find(
+    (post) => post.id === Number(id)
+  ) 
 
   if (!post) {
     return (
