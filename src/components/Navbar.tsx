@@ -21,7 +21,7 @@ export default function Navbar() {
           {['Ana Sayfa', 'Hizmetlerimiz', 'Blog', 'İletişim'].map((item, index) => (
             <Link
               key={index}
-              href={item === 'Ana Sayfa' ? '/' : item === 'Hizmetlerimiz' ?  '#hizmetler' : item === 'İletişim' ? '/iletisim' : `/${item.toLowerCase()}`}
+              href={item === 'Ana Sayfa' ? '/' : item === 'Hizmetlerimiz' ?  '/#hizmetler' : item === 'İletişim' ? '/iletisim' : `/${item.toLowerCase()}`}
               className="relative py-2 text-white/90 hover:text-white transition-colors duration-300 group text-sm uppercase tracking-wider font-medium"
             >
               {item}
@@ -47,7 +47,7 @@ export default function Navbar() {
           {['Ana Sayfa', 'Hizmetlerimiz', 'Blog', 'İletişim'].map((item, index) => (
             <Link
               key={index}
-              href={item === 'Ana Sayfa' ? '/' : item === 'Hizmetlerimiz' ? '#hizmetler' : item === 'İletişim' ? '/iletisim' : `/${item.toLowerCase()}`}
+              href={item === 'Ana Sayfa' ? '/' : item === 'Hizmetlerimiz' ? '/#hizmetler' : item === 'İletişim' ? '/iletisim' : `/${item.toLowerCase()}`}
               className="text-white/90 hover:text-white hover:translate-x-2 transition-all duration-300 ease-in-out text-sm uppercase tracking-wider font-medium"
               onClick={() => setIsOpen(false)}
             >

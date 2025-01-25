@@ -1,3 +1,5 @@
+
+
 import Image from "next/image";
 import Link from "next/link";
 import { Metadata } from "next";
@@ -64,8 +66,6 @@ const images = {
 export default function AnaSayfa() {
   return (
     <main className="min-h-screen">
-    
-
       {/* Hero Section */}
       <section className="relative h-screen">
         <Image

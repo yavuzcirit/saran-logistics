@@ -1,16 +1,17 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import { Metadata } from 'next'
-import { BlogPost, blogPosts } from '../data'
+import Image from 'next/image';
+import Link from 'next/link';
 
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
-  const post = blogPosts.find(post => post.id === parseInt(params.id))
-  
+import { blogPosts } from '../data';
+
+
+export async function generateMetadata({ params }) {
+  const post = blogPosts.find((post) => post.id === Number(params.id));
+
   if (!post) {
     return {
       title: 'Blog Yazısı Bulunamadı',
-      description: 'İstenen blog yazısı şu anda mevcut değil.'
-    }
+      description: 'İstenen blog yazısı şu anda mevcut değil.',
+    };
   }
 
   return {
@@ -21,34 +22,36 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
       title: post.baslik,
       description: post.meta_description,
       images: [{ url: post.resim }],
-      type: 'article'
+      type: 'article',
     },
     twitter: {
       card: 'summary_large_image',
       title: post.baslik,
       description: post.meta_description,
-      images: [post.resim]
-    }
-  }
+      images: [post.resim],
+    },
+  };
 }
 
-export default function BlogDetail({ params }: { params: { id: string } }) {
-  const post: BlogPost | undefined = blogPosts.find(post => post.id === parseInt(params.id))
-  
+export default function BlogDetail({ params }) {
+  const post = blogPosts.find(
+    (post) => post.id === Number(params.id)
+  );
+
   if (!post) {
     return (
       <div className="pt-24 min-h-screen bg-gray-50">
         <div className="container mx-auto p-8 text-center">
           <h1 className="text-2xl font-bold text-gray-700">Blog yazısı bulunamadı</h1>
-          <Link 
-            href="/blog" 
+          <Link
+            href="/blog"
             className="text-blue-600 hover:text-blue-700 mt-4 inline-block"
           >
             Blog sayfasına dön
           </Link>
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -75,14 +78,14 @@ export default function BlogDetail({ params }: { params: { id: string } }) {
             <time dateTime={post.tarih} className="text-gray-500 mb-6 block">
               {post.tarih}
             </time>
-            <div 
+            <div
               className="prose max-w-none"
-              itemScope 
+              itemScope
               itemType="http://schema.org/BlogPosting"
             >
               <meta itemProp="headline" content={post.baslik} />
               <meta itemProp="datePublished" content={post.tarih} />
-              <div 
+              <div
                 dangerouslySetInnerHTML={{ __html: post.icerik }}
                 itemProp="articleBody"
               />
@@ -99,5 +102,5 @@ export default function BlogDetail({ params }: { params: { id: string } }) {
         </div>
       </div>
     </article>
-  )
+  );
 }
