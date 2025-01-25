@@ -21,6 +21,8 @@ export default function RootLayout({
   return (
     <html lang="tr">
       <head>
+        <meta name="robots" content="index, follow" />
+        <meta name="googlebot" content="index, follow" />
         <link
           rel="preload"
           href="/bg-hero.webp"
