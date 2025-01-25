@@ -1,48 +1,56 @@
+import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { JSX } from 'react';
+import { blogPosts, BlogPost } from '../data';
 
-import { blogPosts } from '../data';
+type Props = {
+  params: {
+    id: string;
+  };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
 
-
-export async function generateMetadata({ params }) {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = blogPosts.find((post) => post.id === Number(params.id));
 
-  if (!post) {
-    return {
-      title: 'Blog Yazısı Bulunamadı',
-      description: 'İstenen blog yazısı şu anda mevcut değil.',
-    };
-  }
-
-  return {
-    title: post.baslik,
-    description: post.meta_description,
-    keywords: post.anahtar_kelimeler,
-    openGraph: {
-      title: post.baslik,
-      description: post.meta_description,
-      images: [{ url: post.resim }],
-      type: 'article',
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: post.baslik,
-      description: post.meta_description,
-      images: [post.resim],
-    },
-  };
+  return post
+    ? {
+        title: post.baslik,
+        description: post.meta_description,
+        keywords: post.anahtar_kelimeler,
+        openGraph: {
+          title: post.baslik,
+          description: post.meta_description,
+          images: [{ url: post.resim }],
+          type: 'article',
+        },
+        twitter: {
+          card: 'summary_large_image',
+          title: post.baslik,
+          description: post.meta_description,
+          images: [post.resim],
+        },
+      }
+    : {
+        title: 'Blog Yazısı Bulunamadı',
+        description: 'İstenen blog yazısı şu anda mevcut değil.',
+      };
 }
 
-export default function BlogDetail({ params }) {
-  const post = blogPosts.find(
-    (post) => post.id === Number(params.id)
-  );
+export default async function BlogDetail({ params }: Props): Promise<JSX.Element> {
+const { id } : {id: string} = params as {id: string};
+  const post: BlogPost = await blogPosts?.find(
+    (post: BlogPost) => post.id === Number(id)
+  ) as BlogPost;
 
   if (!post) {
     return (
       <div className="pt-24 min-h-screen bg-gray-50">
         <div className="container mx-auto p-8 text-center">
-          <h1 className="text-2xl font-bold text-gray-700">Blog yazısı bulunamadı</h1>
+          <h1 className="text-2xl font-bold text-gray-700">
+            Blog yazısı bulunamadı
+          </h1>
           <Link
             href="/blog"
             className="text-blue-600 hover:text-blue-700 mt-4 inline-block"
@@ -86,7 +94,7 @@ export default function BlogDetail({ params }) {
               <meta itemProp="headline" content={post.baslik} />
               <meta itemProp="datePublished" content={post.tarih} />
               <div
-                dangerouslySetInnerHTML={{ __html: post.icerik }}
+                dangerouslySetInnerHTML={{ __html: post.icerik || '' }}
                 itemProp="articleBody"
               />
             </div>

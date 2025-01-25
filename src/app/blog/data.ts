@@ -1,13 +1,13 @@
 export interface BlogPost {
-    id: number;
+    id?: number | string;
     baslik: string;
     ozet: string;
     resim: string;
     tarih: string;
     kategori: string;
-    anahtar_kelimeler: string[];
-    meta_description: string;
-    icerik: string;
+    meta_description?: string;
+    anahtar_kelimeler?: string[];
+    icerik?: string;
   }
   
   export const blogPosts: BlogPost[] = [
@@ -18,13 +18,13 @@ export interface BlogPost {
       resim: "https://images.unsplash.com/photo-1573164713714-d95e436ab8d6",
       tarih: "20 Mart 2024",
       kategori: "Teknoloji",
+      meta_description: "Modern lojistik teknolojileri nasıl rekabet avantajı sağlar? Dijital dönüşümün tedarik zinciri üzerindeki stratejik etkilerini inceleyin.",
       anahtar_kelimeler: [
         "lojistik dijital dönüşüm",
         "tedarik zinciri teknolojileri",
         "lojistik optimizasyonu",
         "dijital lojistik çözümleri"
       ],
-      meta_description: "Modern lojistik teknolojileri nasıl rekabet avantajı sağlar? Dijital dönüşümün tedarik zinciri üzerindeki stratejik etkilerini inceleyin.",
       icerik: `
         <article>
           <h1>Lojistik Sektöründe Dijital Dönüşüm: Rekabetçi Avantajlar ve Teknoloji Stratejileri</h1>
@@ -51,13 +51,13 @@ export interface BlogPost {
       resim: "https://images.unsplash.com/photo-1532601224476-15c79f2f7a51",
       tarih: "18 Mart 2024",
       kategori: "Sürdürülebilirlik",
+      meta_description: "Sürdürülebilir lojistik çözümleri ile çevresel etkiyi azaltın ve operasyonel verimliliği artırın. Yeşil taşımacılık stratejilerini keşfedin.",
       anahtar_kelimeler: [
         "yeşil lojistik",
         "sürdürülebilir taşımacılık",
         "çevre dostu lojistik",
         "elektrikli araç filosu"
       ],
-      meta_description: "Sürdürülebilir lojistik çözümleri ile çevresel etkiyi azaltın ve operasyonel verimliliği artırın. Yeşil taşımacılık stratejilerini keşfedin.",
       icerik: `
         <article>
           <h1>Sürdürülebilir Lojistik Çözümleri: Yeşil Taşımacılık ve Çevre Dostu Stratejiler</h1>
@@ -84,13 +84,13 @@ export interface BlogPost {
       resim: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088",
       tarih: "15 Mart 2024",
       kategori: "E-ticaret",
+      meta_description: "E-ticaret lojistiğinin son trendlerini keşfedin: Aynı gün teslimat, drone teknolojisi ve yapay zeka destekli stok yönetimi stratejileri.",
       anahtar_kelimeler: [
         "e-ticaret lojistiği",
         "hızlı teslimat",
         "mikro-fulfillment",
         "yapay zeka lojistik"
       ],
-      meta_description: "E-ticaret lojistiğinin son trendlerini keşfedin: Aynı gün teslimat, drone teknolojisi ve yapay zeka destekli stok yönetimi stratejileri.",
       icerik: `
         <article>
           <h1>E-ticaret Lojistiğinde Son Trendler: Hızlı Teslimat ve Dijital Dönüşüm Stratejileri</h1>

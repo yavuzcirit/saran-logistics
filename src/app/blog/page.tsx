@@ -1,41 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-
-interface BlogPost {
-  id: number;
-  baslik: string;
-  ozet: string;
-  resim: string;
-  tarih: string;
-  kategori: string;
-}
-
-const blogPosts: BlogPost[] = [
-  {
-    id: 1,
-    baslik: "Lojistik Sektöründe Dijital Dönüşüm",
-    ozet: "Modern lojistik süreçlerinde teknolojinin rolü ve dijital dönüşümün önemi...",
-    resim: "https://images.unsplash.com/photo-1573164713714-d95e436ab8d6",
-    tarih: "20 Mart 2024",
-    kategori: "Teknoloji"
-  },
-  {
-    id: 2,
-    baslik: "Sürdürülebilir Lojistik Çözümleri",
-    ozet: "Çevre dostu taşımacılık ve yeşil lojistik uygulamaları hakkında bilmeniz gerekenler...",
-    resim: "https://images.unsplash.com/photo-1532601224476-15c79f2f7a51",
-    tarih: "18 Mart 2024",
-    kategori: "Sürdürülebilirlik"
-  },
-  {
-    id: 3,
-    baslik: "E-ticaret Lojistiğinde Son Trendler",
-    ozet: "E-ticaret sektörünün lojistik süreçlere etkileri ve yeni nesil çözümler...",
-    resim: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088",
-    tarih: "15 Mart 2024",
-    kategori: "E-ticaret"
-  }
-]
+import { blogPosts } from './data'
 
 export default function Blog() {
   return (
