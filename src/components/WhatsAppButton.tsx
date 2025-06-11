@@ -1,7 +1,7 @@
 'use client'
 
 export default function WhatsAppButton() {
-  const phoneNumber = '905309954723'
+  const phoneNumber = '905352198377'
 
   const handleWhatsAppClick = () => {
     window.open(`https://wa.me/${phoneNumber}?text=Merhaba,%20hizmetlerinizle%20alakalı%20bilgi%20almak%20istiyorum`, '_blank')
