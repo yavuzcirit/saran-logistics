@@ -22,7 +22,7 @@ Mesaj: ${formData.message}
     `.trim();
 
     // Create mailto URL
-    const mailtoUrl = `mailto:yavuzcirit23@gmail.com?subject=İletişim Formu&body=${encodeURIComponent(emailBody)}`;
+    const mailtoUrl = `mailto:Baran.saran@icloud.com?subject=İletişim Formu&body=${encodeURIComponent(emailBody)}`;
     
     // Open email client
     window.location.href = mailtoUrl;
@@ -115,11 +115,11 @@ Mesaj: ${formData.message}
                 </p>
                 <p>
                   <strong>Telefon:</strong><br />
-                  +90 530 995 47 23
+                  +90 535 219 83 77
                 </p>
                 <p>
                   <strong>E-posta:</strong><br />
-                  info@saranlojistik.com
+                  Baran.saran@icloud.com
                 </p>
                 <div className="mt-6 h-64 rounded-lg overflow-hidden">
                   <iframe
